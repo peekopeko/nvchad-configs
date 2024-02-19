@@ -2,11 +2,18 @@ local M = {}
 
 M.disabled = {
   n = {
-    -- ["<leader>e"] = "",
+    ["<leader>e"] = "",
     ["<leader>h"] = "",
     ["<leader>v"] = "",
     ["<C-n>"] = "",
     ["<leader>lf"] = "",
+  },
+}
+
+M.nvterm = {
+  plugin = true,
+  n = {
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
   },
 }
 
