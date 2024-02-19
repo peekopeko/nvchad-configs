@@ -11,6 +11,7 @@ lspconfig.pyright.setup {
   capabilities = capabilities,
   filetypes = { "python" },
 }
+
 -- Java
 lspconfig.jdtls.setup {
   on_attach = on_attach,

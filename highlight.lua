@@ -6,8 +6,9 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = {
+  Comment = { -- something
     italic = true,
+    fg = "teal",
   },
 }
 

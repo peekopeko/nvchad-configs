@@ -16,7 +16,10 @@ M.plugins = "custom.plugins"
 -- Custom Mappings
 M.mappings = require "custom.mappings"
 
--- Custom Options
+-- Options
 require "custom.set"
+
+-- Autocommands
+require "custom.autocommand"
 
 return M
