@@ -2,12 +2,6 @@ local overrides = require "custom.configs.overrides"
 --@type NvPluginSpec[]
 local plugins = {
   {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = { --[[ things you want to change go here]]
-    },
-  },
-  {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
@@ -84,10 +78,6 @@ local plugins = {
       require("dap-python").setup(path)
     end,
   },
-  -- JAVA Debugger
-  -- {
-  -- },
-
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -105,37 +95,5 @@ local plugins = {
     end,
   },
 }
-
--- Hardtime
--- A Neovim plugin helping you establish good command workflow and habit
--- {
---   "m4xshen/hardtime.nvim",
---   dependencies = {
---     "MunifTanjim/nui.nvim",
---     "nvim-lua/plenary.nvim",
---   },
---   opts = {
---     disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil" },
---   },
---   disable_mouse = false,
--- },
--- DadBod
--- {
---   "kristijanhusak/vim-dadbod-ui",
---   dependencies = {
---     { "tpope/vim-dadbod",                     lazy = true },
---     { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
---   },
---   cmd = {
---     "DBUI",
---     "DBUIToggle",
---     "DBUIAddConnection",
---     "DBUIFindBuffer",
---   },
---   init = function()
---     -- Your DBUI configuration
---     vim.g.db_ui_use_nerd_fonts = 1
---   end,
--- },
 
 return plugins

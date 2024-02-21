@@ -17,3 +17,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --     vim.bo.expandtab = true
 --   end,
 -- })
+-- vim.api.nvim_create_autocmd("FileType", {
+--   desc = "Disable Friendly Snippets on java files.",
+--   pattern = { "java" },
+--   callback = function()
+--     require("lazy").setup {
+--       "rafamadriz/friendly-snippets",
+--       cond = false,
+--     }
+--   end,
+-- })
