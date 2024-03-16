@@ -10,8 +10,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Tabspace on bash and zsh files
 vim.api.nvim_create_autocmd("FileType", {
-  desc = "Tabspace for JAVA, CPP and C",
-  pattern = { ".bash*", "*.zsh*" },
+  desc = "Tabspace for Scripts",
+  pattern = { ".bash*", "*.zsh*", "*.sh" },
   callback = function()
     vim.bo.shiftwidth = 4
     vim.bo.softtabstop = 0
