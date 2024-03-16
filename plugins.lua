@@ -2,6 +2,13 @@ local overrides = require "custom.configs.overrides"
 --@type NvPluginSpec[]
 local plugins = {
   {
+    "ziontee113/color-picker.nvim",
+    ft = { "css", "html", "markdown", "python", "java", "lua" },
+    config = function()
+      require "custom.configs.color-picker"
+    end,
+  },
+  {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
@@ -32,7 +39,7 @@ local plugins = {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft = { "python", "java", "lua", "c", "cpp", "rust" },
+    ft = { "python", "java", "lua", "c", "cpp", "rust", "typescript", "javascript", "bash", "zsh" },
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = function()
       return require "custom.configs.null-ls"
@@ -73,11 +80,12 @@ local plugins = {
       "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    config = function(_, opts) --ignore
+    config = function() --ignore
       local path = "~/.virtualenvs/debugpy/bin/python"
       require("dap-python").setup(path)
     end,
   },
+  {},
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,

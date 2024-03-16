@@ -15,7 +15,7 @@ todo.setup {
       color = "#FF0000",
       alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
     },
-    TODO = { icon = " ", color = "#4CAF50" }, -- info
+    TODO = { icon = " ", color = "#4CAF50", alt = { "ASSIGNMENT" } }, -- info
     HACK = { icon = " ", color = "#FBBF24", alt = { "WTF" } }, -- warning
     WARN = { icon = " ", color = "#FF6464", alt = { "WARNING", "XXX" } }, -- error
     PERF = { icon = " ", color = "#8E4DCD", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },

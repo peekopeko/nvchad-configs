@@ -3,14 +3,36 @@ local config = require "plugins.configs.lspconfig"
 local on_attach = config.on_attach
 local capabilities = config.capabilities
 
-local lspconfig = require "lspconfig" --ignore
+---@diagnostic disable-next-line: different-requires
+local lspconfig = require "lspconfig"
+
+-- XML
+lspconfig.lemminx.setup {}
+
+-- HTML
+lspconfig.html.setup {}
+
+-- CSS
+lspconfig.cssls.setup {}
 
 -- python
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "python" },
+lspconfig.pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "W391" },
+          maxLineLength = 100,
+        },
+      },
+    },
+  },
 }
+-- lspconfig.pyright.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "python" },
+-- }
 
 -- Java
 lspconfig.jdtls.setup {
@@ -43,6 +65,7 @@ lspconfig.clangd.setup {
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
+  filetypes = { "c", "cpp" },
 }
 
 -- Typescript and Javascript i.e Node JS

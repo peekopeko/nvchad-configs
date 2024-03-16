@@ -7,7 +7,7 @@ M.ui = {
   theme = "gruvbox",
   hl_override = highlight.override,
   hl_add = highlight.add,
-  transparency = true,
+  transparency = false,
 }
 
 -- Custom Plugins

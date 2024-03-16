@@ -7,14 +7,33 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank { higroup = "WildMenu", timeout = 180 }
   end,
 })
--- Tabspace on java, cpp and c files
--- vim.api.nvim_create_autocmd("FileType", {
---   desc = "Tabspace for JAVA, CPP and C",
---   pattern = { "java", "cpp", "c" },
+
+-- Tabspace on bash and zsh files
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Tabspace for JAVA, CPP and C",
+  pattern = { ".bash*", "*.zsh*" },
+  callback = function()
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 0
+    vim.bo.expandtab = true
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Scrolloff for text files.",
+  pattern = { "*.txt" },
+  callback = function()
+    vim.o.scrolloffy = 4
+  end,
+})
+
+-- format on save for java.
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   desc = "Format on save",
+--   pattern = "*.java",
 --   callback = function()
---     vim.bo.shiftwidth = 4
---     vim.bo.softtabstop = 0
---     vim.bo.expandtab = true
+--     if vim.lsp.buf_get_clients() then
+--       vim.lsp.buf.format()
+--     end
 --   end,
 -- })
 -- vim.api.nvim_create_autocmd("FileType", {
