@@ -9,11 +9,17 @@ local lspconfig = require "lspconfig"
 -- XML
 lspconfig.lemminx.setup {}
 
--- HTML
-lspconfig.html.setup {}
+-- -- HTML
+-- lspconfig.html.setup {}
+--
+-- -- CSS
+-- lspconfig.cssls.setup {}
 
--- CSS
-lspconfig.cssls.setup {}
+-- For languages
+-- { "astro", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte", "typescriptreact", "vue" }
+-- lspconfig.emmet_ls.setup {}
+-- { "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "typescriptreact" }
+lspconfig.emmet_language_server.setup {}
 
 -- python
 lspconfig.pylsp.setup {
@@ -33,12 +39,26 @@ lspconfig.pylsp.setup {
 --   capabilities = capabilities,
 --   filetypes = { "python" },
 -- }
+-- require("java").setup()
 
 -- Java
 lspconfig.jdtls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "java" },
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-21",
+            path = "/usr/lib/jvm/java-21-openjdk",
+            default = true,
+          },
+        },
+      },
+    },
+  },
 }
 
 -- RUST
@@ -68,13 +88,13 @@ lspconfig.clangd.setup {
   filetypes = { "c", "cpp" },
 }
 
--- Typescript and Javascript i.e Node JS
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    preferences = {
-      disableSuggestions = true,
-    },
-  },
-}
+-- -- Typescript and Javascript i.e Node JS
+-- lspconfig.tsserver.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   init_options = {
+--     preferences = {
+--       disableSuggestions = true,
+--     },
+--   },
+-- }

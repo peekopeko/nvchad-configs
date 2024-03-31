@@ -3,7 +3,7 @@ local overrides = require "custom.configs.overrides"
 local plugins = {
   {
     "ziontee113/color-picker.nvim",
-    ft = { "css", "html", "markdown", "python", "java", "lua" },
+    ft = { "css", "html", "markdown", "python", "java" },
     config = function()
       require "custom.configs.color-picker"
     end,
@@ -58,34 +58,22 @@ local plugins = {
       "mfussenegger/nvim-dap",
     },
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      require "custom.configs.nvim-dap-ui"
     end,
   },
-  -- Python Debugger
   {
+    -- Python Debugger
     "mfussenegger/nvim-dap-python",
     ft = "python",
     dependencies = {
       "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    config = function() --ignore
+    config = function()
       local path = "~/.virtualenvs/debugpy/bin/python"
       require("dap-python").setup(path)
     end,
   },
-  {},
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,

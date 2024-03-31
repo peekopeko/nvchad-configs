@@ -25,24 +25,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.o.scrolloffy = 4
   end,
 })
-
--- format on save for java.
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   desc = "Format on save",
---   pattern = "*.java",
---   callback = function()
---     if vim.lsp.buf_get_clients() then
---       vim.lsp.buf.format()
---     end
---   end,
--- })
--- vim.api.nvim_create_autocmd("FileType", {
---   desc = "Disable Friendly Snippets on java files.",
---   pattern = { "java" },
---   callback = function()
---     require("lazy").setup {
---       "rafamadriz/friendly-snippets",
---       cond = false,
---     }
---   end,
--- })

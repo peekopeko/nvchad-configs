@@ -1,4 +1,5 @@
 local M = {}
+
 M.disabled = {
   n = {
     ["<leader>e"] = "",
@@ -7,20 +8,39 @@ M.disabled = {
     ["<C-n>"] = "",
     ["<leader>lf"] = "",
     ["<C-c>"] = "",
+    ["<leader>fm"] = "",
   },
 }
+
 M.nvterm = {
   plugin = true,
   n = {
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
   },
 }
+
 M.general = {
+
   i = {
     ["jj"] = { "<Esc>", "Exit Insert mode" },
     ["<C-n>"] = { "<cmd>PickColorInsert<cr>", "Color Picker" },
   },
+
   n = {
+
+    ["<leader>fm"] = {
+      function()
+        local clients = vim.lsp.buf_get_clients()
+        for _, client in ipairs(clients) do
+          if client.server_capabilities.documentFormattingProvider then
+            vim.lsp.buf.format { async = true }
+            return
+          end
+        end
+        vim.cmd "normal! m`gg=G`'"
+      end,
+      "LSP formatting",
+    },
     ["<C-c>"] = { "<cmd> %y+ <cr>", "Copy Whole file.", opts = { silent = true } },
     ["<C-n>"] = { "<cmd>PickColor<cr>", "Color Picker" },
     ["<leader>td"] = { "<cmd>TodoTelescope<cr>", "Todo List", opts = { silent = true } },
@@ -47,12 +67,6 @@ M.general = {
     ["<C-u>"] = { "<C-u>zz", "Center cursor while scrolling." },
     ["<leader>wn"] = { ":set nowrap!<cr>", "Toggle Textwrapping.", opts = { silent = true } },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <cr>", "Diagnostic Menu", opts = { silent = true, noremap = true } },
-  },
-}
-M.dad_bod = {
-  plugin = true,
-  n = {
-    ["<leader>db"] = { "<cmd>DBUIToggle<cr>", "DadBod UI Toggle", opts = { silent = true } },
   },
 }
 return M
